@@ -20,11 +20,11 @@
 
 .char2 {
   background: url("img/menu-img.png");
-  background-size: cover;
+  background-size: contain;
   flex-direction: column;
   background-position: center top;
   margin-top: -50px;
-  height: 450px;
+  height: 200px;
   /*justify-content: center;*/
 }
 
@@ -37,7 +37,9 @@ div .logo {
 img {
   margin-bottom: 10px;
   margin-left: -10px;
+  cursor: pointer;
 }
+
 
 .light {
   margin-top: 0;
@@ -108,11 +110,17 @@ td, th {
 
 
 
+
+
 /*
 
 ***** Menu *****
 
 */
+
+
+
+
 
 .display {
   display: block;
@@ -137,11 +145,11 @@ td, th {
   position: absolute;
   width:  70%;
   height: 90%;
-  background-color: #141A20;
-  left: 50%;
-  top: 50%;
-  margin-top: -500px;
-  margin-left: -830px;
+  background-color: #181E25;
+  left: 15%;
+  top: 10%;
+  /*margin-top: -500px;
+  margin-left: -830px;*/
 }
 
 .menu p, .menu h1, .menu h2, .menu h3 {
@@ -168,7 +176,7 @@ td, th {
 
 div.popup-nav {
   background-color: #5B864D;
-  height: 150px;
+  height: 80px;
 }
 
 .left-margin {
@@ -176,9 +184,81 @@ div.popup-nav {
 }
 
 .popup-body {
-  overflow-y: auto;
+  overflow: auto;
 }
 
-/*html {
-  overflow: auto;
-}*/
+.items {
+  width: 100%;
+  height: 440px;
+  margin: 20px auto 0 auto;
+  background-color: #141A20;
+}
+
+.items img {
+  margin: 10px 0 0 10px;
+  /*display: fixed;*/
+}
+
+.item-pad {
+  padding-left: 20px;
+}
+
+
+
+
+
+.item-details {
+  display: none;
+  position: fixed;
+  /*margin-left: 500px;*/
+  background-color: #141A20;
+  width: 315px;
+  height: 440px;
+  z-index: 10;
+}
+
+.item-details img {
+  margin: 0px 0 0 0px;
+}
+
+.item-details p {
+  display: inline-block;
+  margin: -30px 10px 0 5px;
+}
+
+p {
+  color: #fff;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.row .col {
+  padding: 0;
+}
+
+.row {
+  margin-bottom: 5px;
+}
+
+h2 .padding-top {
+  margin-top: 15px;
+}
+
+.padding-top h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  margin-left: 5px;
+}
+
+div .item-details td {
+  padding: 0;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #8E9193;
+}
+
+h6 {
+  color: #fff;
+}

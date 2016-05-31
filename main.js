@@ -201,13 +201,6 @@
 //
 //
 //
-var apiKey = "42abbcb15ac647baa65d34b7e6bf6c62";
-
-$.ajaxSetup({
-  headers: {
-    "X-API-Key": apiKey
-  }
-});
 
 
 // // GETS USER ID FROM USER NAME
@@ -361,15 +354,6 @@ $.ajaxSetup({
 
 
 
-//THE BELLOW IS THE ONE THAT I WANT TO WORK WITH !!!!!!!!!!!!!!!!!!!!!!!!!
-
-
-
-
-
-
-
-
 
 //
 // // Get the FIRST 500 WEAPONS
@@ -476,80 +460,6 @@ $.ajaxSetup({
 // }
 
 
-
-
-
-//
-//
-// //THIS IS THE ONE I WILL USE
-//
-//
-//
-//
-//
-//
-// //MASSIVE DATA PULL AND DISPLAY TO SCREEN!
-//
-// var page = 0;
-// var dataGold = [];
-//
-// var displayData = function(){
-//   var bungie = "http://www.bungie.net";
-//   for (var i = 0; i < dataGold.length; i++) {
-//     // console.log(dataGold[i].items);
-//     for (var variable in dataGold[i].items) {
-//       var item = dataGold[i].items[variable];
-//       console.log(dataGold[i].items[variable]);
-//       $('body').append($(`<div class="border"><p>${dataGold[i].items[variable].itemName}</p>
-//       <img src=${bungie + "" + dataGold[i].items[variable].icon }>
-//       <p> ${item.itemDescription}</p>
-//       <p>equippable: ${item.equippable}</p>
-//       <p>${item.tierTypeName}</p>
-//       <p>${item.itemTypeName}</p>
-//       <p>BucketHash:${item.bucketTypeHash}</p>
-//       <p>ItemHash:${item.itemHash}</p>
-//       <br><br>
-//       </div>`))
-//     }
-//   };
-// };
-//
-// var dataMine = function() {
-//   page ++;
-//
-//   var $xhr = $.getJSON(`http://www.bungie.net/Platform/Destiny/Explorer/Items/?count=500&page=${page}&definitions=true`);
-//   $xhr.done(function(data) {
-//     if ($xhr.status !== 200) {
-//       return;
-//     }
-//     dataGold.push(data.Response.definitions);
-//     console.log(data);
-//     // if (page > 0) {
-//     //   console.log(dataGold);
-//     // }
-//     if (page === 7) {
-//       displayData()
-//       return;
-//     }
-//     dataMine();
-//   });
-//   console.log("does this ever print?");
-// };
-//
-// var $xhr = $.getJSON(`http://www.bungie.net/Platform/Destiny/Explorer/Items/?count=500&page=0&definitions=true`);
-// $xhr.done(function(data) {
-//   if ($xhr.status !== 200) {
-//     return;
-//   }
-//   dataGold.push(data.Response.definitions);
-//   dataMine();
-// });
-// $xhr.fail(function(err) {
-//   console.log(err);
-// });
-//
-//
-//
 //
 // //
 // //
@@ -648,29 +558,399 @@ $.ajaxSetup({
 
 
 
+
+
+
+
+
+
+
+
+
+
+var apiKey = "42abbcb15ac647baa65d34b7e6bf6c62";
+
+$.ajaxSetup({
+  headers: {
+    "X-API-Key": apiKey
+  }
+});
+
+
+//THE BELLOW IS THE ONE THAT I WANT TO WORK WITH !!!!!!!!!!!!!!!!!!!!!!!!!
+//
+//
+// //THIS IS THE ONE I WILL USE
+//
+//
+//MASSIVE DATA PULL AND DISPLAY TO SCREEN!
+
+var page = 0;
+var dataGold = [];
+
+var helmet = [[],[],[]];
+var gauntlets = [[],[],[]];
+var chestArmor = [[],[],[]];
+var legArmor = [[],[],[]];
+var classArmor = [[],[],[]];
+var artifact = [[],[],[]];
+
+var hunterChestArmor = [];
+var hunterGauntlets = [];
+var hunterHelmet = [];
+var hunterLegArmor = [];
+var hunterClassArmor = [];
+var hunterArtifact = []; //This may not be class specific... check later.
+
+
+var warlockChestArmor = [];
+var warlockGauntlets = [];
+var warlockHelmet = [];
+var warlockLegArmor = [];
+var warlockClassArmor = [];
+var warlockArtifact = []; //This may not be class specific... check later.
+
+
+var titanChestArmor = [];
+var titanGauntlets = [];
+var titanHelmet = [];
+var titanLegArmor = [];
+var titanClassArmor = [];
+var titanArtifact = []; //This may not be class specific... check later.
+
+
+// var displayData = function(){
+  var bungie = "http://www.bungie.net";
+//   for (var i = 0; i < dataGold.length; i++) {
+//     // console.log(dataGold[i].items);
+//     for (var variable in dataGold[i].items) {
+//       var item = dataGold[i].items[variable];
+//       console.log(dataGold[i].items[variable]);
+//       $('body').append($(`<div class="border"><p>${dataGold[i].items[variable].itemName}</p>
+//       <img src=${bungie + "" + dataGold[i].items[variable].icon }>
+//       <p> ${item.itemDescription}</p>
+//       <p>equippable: ${item.equippable}</p>
+//       <p>${item.tierTypeName}</p>
+//       <p>${item.itemTypeName}</p>
+//       <p>BucketHash:${item.bucketTypeHash}</p>
+//       <p>ItemHash:${item.itemHash}</p>
+//       <br><br>
+//       </div>`))
+//     }
+//   };
+// };
+
+
+
+
+
+//
+// $('body').append($(`<div class="border"><p>${dataGold[i].items[variable].itemName}</p>
+// <img src=${bungie + "" + dataGold[i].items[variable].icon }>
+// <p> ${item.itemDescription}</p>
+// <p>equippable: ${item.equippable}</p>
+// <p>${item.tierTypeName}</p>
+// <p>${item.itemTypeName}</p>
+// <p>BucketHash:${item.bucketTypeHash}</p>
+// <p>ItemHash:${item.itemHash}</p>
+// <br><br>
+// </div>`));
+
+
+
+
+var dataMine = function() {
+  page ++;
+
+  var $xhr = $.getJSON(`http://www.bungie.net/Platform/Destiny/Explorer/Items/?count=500&page=${page}&definitions=true`);
+  $xhr.done(function(data) {
+    if ($xhr.status !== 200) {
+      return;
+    }
+    dataGold.push(data.Response.definitions);
+    if (page === 7) {
+      // displayData(); //when code is finished run functions
+      console.log(dataGold);
+
+
+        for (var i = 0; i < dataGold.length; i++) {
+           for (var variable in dataGold[i].items) {
+            var item = dataGold[i].items[variable];
+            if (item.bucketTypeHash == 3448274439) {
+              if (item.classType == 0) {
+                helmet[0].push(item)
+              }
+              if (item.classType == 1) {
+                helmet[1].push(item)
+              }
+              if (item.classType == 2) {
+                helmet[2].push(item)
+              }
+            }
+            if (item.bucketTypeHash == 14239492) {
+              if (item.classType == 0) {
+                chestArmor[0].push(item)
+              }
+              if (item.classType == 1) {
+                chestArmor[1].push(item)
+              }
+              if (item.classType == 2) {
+                chestArmor[2].push(item)
+              }
+            }
+            if (item.bucketTypeHash == 3551918588) {
+              if (item.classType == 0) {
+                gauntlets[0].push(item)
+              }
+              if (item.classType == 1) {
+                gauntlets[1].push(item)
+              }
+              if (item.classType == 2) {
+                gauntlets[2].push(item)
+              }
+            }
+            if (item.bucketTypeHash == 20886954) {
+              if (item.classType == 0) {
+                legArmor[0].push(item)
+              }
+              if (item.classType == 1) {
+                legArmor[1].push(item)
+              }
+              if (item.classType == 2) {
+                legArmor[2].push(item)
+              }
+            }
+            if (item.bucketTypeHash == 1585787867) {
+              if (item.classType == 0) {
+                classArmor[0].push(item)
+              }
+              if (item.classType == 1) {
+                classArmor[1].push(item)
+              }
+              if (item.classType == 2) {
+                classArmor[2].push(item)
+              }
+            }
+            if (item.bucketTypeHash == 434908299) {
+              if (item.classType == 0) {
+                artifact[0].push(item)
+              }
+              if (item.classType == 1) {
+                artifact[1].push(item)
+              }
+              if (item.classType == 2) {
+                artifact[2].push(item)
+              }
+            }
+          }
+        }
+        console.log(titanHelmet);
+        console.log(titanChestArmor);
+        console.log(titanGauntlets);
+        console.log(titanLegArmor);
+        console.log(hunterHelmet);
+        console.log(hunterChestArmor);
+        console.log(hunterGauntlets);
+        console.log(hunterLegArmor);
+        console.log(warlockHelmet);
+        console.log(warlockChestArmor);
+        console.log(warlockGauntlets);
+        console.log(warlockLegArmor);
+        console.log(hunterArtifact);
+        console.log(warlockArtifact);
+        console.log(titanArtifact);
+        console.log(titanClassArmor);
+        console.log(hunterClassArmor);
+        console.log(warlockClassArmor);
+        console.log(helmet);
+        console.log(gauntlets);
+        console.log(chestArmor);
+        console.log(legArmor);
+        console.log(classArmor);
+        console.log(artifact);
+
+
+      $(".logo").css({"color": "green"});
+
+
+
+      return;
+    }
+    dataMine();
+  });
+  console.log("hit the server");
+};
+
+
+
+
+var $xhr = $.getJSON(`http://www.bungie.net/Platform/Destiny/Explorer/Items/?count=500&page=0&definitions=true`);
+$xhr.done(function(data) {
+  if ($xhr.status !== 200) {
+    return;
+  }
+  dataGold.push(data.Response.definitions);
+  dataMine();
+});
+$xhr.fail(function(err) {
+  console.log(err);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//all other functions
+
+
 var openMenu = function() {
   $(".popup_bg").css({display: "block"});
 };
 var closeMenu = function () {
   $(".popup_bg").css({display: "none"});
+  page = 0;
 };
 
+
+
+
+var selected = "";
+var side = 0;
+//titan=0, hunter=1 warlock=2, -- Titan SET TO DEFAULT -- NEED TO BUILD OUT CLASS CHANGE BUTTONS
+var classSelected = 0;
+
+//clicking on an image uses image id to change hidden menu then opens it
+$('body').on('click', 'img', function() {
+
+
+//SIDE 1-------------------------------------------
+  if (this.id === "helmet1") {
+    selected = "helmet";
+    side = 1;
+  }
+  if (this.id === "gauntles1") {
+    selected = "gauntlets";
+    side = 1;
+  }
+  if (this.id === "chest1") {
+    selected = "chest";
+    side = 1;
+  }
+  if (this.id === "leg1") {
+    selected = "leg";
+    side = 1;
+  }
+  if (this.id === 'classArmor1') {
+    selected = 'classArmor';
+    side = 1;
+  }
+  if (this.id === 'artifact1') {
+    selected = 'artifact';
+    side = 1;
+  }
+
+
+//SIDE 2 ---------------------------------------------
+  if (this.id === "helmet2") {
+    selected = "helmet";
+    side = 2;
+    console.log(selected);
+    console.log(side);
+  }
+  if (this.id === "gauntles2") {
+    selected = "gauntlets";
+    side = 2;
+  }
+  if (this.id === "chest2") {
+    selected = "chestArmor";
+    side = 2;
+  }
+  if (this.id === "leg2") {
+    selected = "legArmor";
+    side = 2;
+  }
+  if (this.id === 'classArmor2') {
+    selected = 'classArmor';
+    side = 2;
+  }
+  if (this.id === 'artifact2') {
+    selected = 'artifact';
+    side = 2;
+  }
+
+  $('.item-pad img').remove();
+
+  for (var i = 0; i < 27; i++) {
+    page += 27; //MAKE SURE TO UPON EXITING SCREEN SET PAGE TO ZERO
+    //everything checks out, but have a hiccup with the append ATM
+    //of course its not going to work... it has no idea what to append... need $('body')
+    //and whatever else... should build into a function...
+    if (selected === "helmet") {
+      $('#mainSelector').append(helmet[classSelected][i]);
+    }
+    if (selected === "gauntlets") {
+      $('#mainSelector').append(gauntlets[classSelected][i]);
+    }
+    if (selected === "chestArmor") {
+      $('#mainSelector').append(chestArmor[classSelected][i]);
+    }
+    if (selected === "legArmor") {
+      $('#mainSelector').append(legArmor[classSelected][i]);
+    }
+    if (selected === "classArmor") {
+      $('#mainSelector').append(classArmor[classSelected][i]);
+    }
+    if (selected === "artifact") {
+      $('#mainSelector').append(artifact[classSelected][i]);
+    }
+  }
+
+
+
+  openMenu();
+  console.log(this.id);
+
+});
+
+
+
+//clicking on the x kills the menu
+$('#x').on('click', function() {
+  closeMenu();
+});
+
+//highlights line currently hovering over
 $('body').on('mouseenter', 'tr', function() {
-  // if ($) {
-  //
-  // }
   $(this).toggleClass('hover');
 }).on('mouseleave', 'tr', function() {
   $(this).toggleClass('hover');
 });
 
-
-$('body').on('click', 'img', function() {
-    openMenu();
+//creates on hover popup with expanded item details
+$('.items').on('mouseenter', "img", function(event) {
+  $("#item-popup").css({"display": "block", "marginLeft": event.pageX + 100, "marginTop": event.pageY -300});
+}).on('mouseleave', "img", function() {
+  $("#item-popup").css({"display": "none"});
 });
 
-$('#x').on('click', function() {
-  closeMenu();
-});
+
+
+
 
 $(".button-collapse").sideNav();
