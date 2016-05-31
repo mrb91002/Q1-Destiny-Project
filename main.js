@@ -585,6 +585,9 @@ $.ajaxSetup({
 //
 //MASSIVE DATA PULL AND DISPLAY TO SCREEN!
 
+var bungie = "http://www.bungie.net";
+var currentItems = [];
+var itemGroupStart = 0;
 var page = 0;
 var dataGold = [];
 
@@ -824,9 +827,15 @@ var openMenu = function() {
 };
 var closeMenu = function () {
   $(".popup_bg").css({display: "none"});
-  page = 0;
+  itemGroupStart = 0;
 };
 
+
+//appending funciton used for the items in the initial popup ***********************************
+var appendItem = function (obj) {
+  currentItems.push(obj);
+  $('#mainSelector').append(`<img src=${bungie + "" + obj.icon}>`);
+};
 
 
 
@@ -844,16 +853,16 @@ $('body').on('click', 'img', function() {
     selected = "helmet";
     side = 1;
   }
-  if (this.id === "gauntles1") {
+  if (this.id === "gauntlets1") {
     selected = "gauntlets";
     side = 1;
   }
   if (this.id === "chest1") {
-    selected = "chest";
+    selected = "chestArmor";
     side = 1;
   }
   if (this.id === "leg1") {
-    selected = "leg";
+    selected = "legArmor";
     side = 1;
   }
   if (this.id === 'classArmor1') {
@@ -873,7 +882,7 @@ $('body').on('click', 'img', function() {
     console.log(selected);
     console.log(side);
   }
-  if (this.id === "gauntles2") {
+  if (this.id === "gauntlets2") {
     selected = "gauntlets";
     side = 2;
   }
@@ -896,28 +905,34 @@ $('body').on('click', 'img', function() {
 
   $('.item-pad img').remove();
 
-  for (var i = 0; i < 27; i++) {
-    page += 27; //MAKE SURE TO UPON EXITING SCREEN SET PAGE TO ZERO
+  for (var i = 0; i < 24; i++) {
+    itemGroupStart += 1; //MAKE SURE TO UPON EXITING SCREEN SET PAGE TO ZERO
     //everything checks out, but have a hiccup with the append ATM
     //of course its not going to work... it has no idea what to append... need $('body')
     //and whatever else... should build into a function...
     if (selected === "helmet") {
-      $('#mainSelector').append(helmet[classSelected][i]);
+      appendItem(helmet[classSelected][i]);
     }
     if (selected === "gauntlets") {
-      $('#mainSelector').append(gauntlets[classSelected][i]);
+      appendItem(gauntlets[classSelected][i]);
     }
     if (selected === "chestArmor") {
-      $('#mainSelector').append(chestArmor[classSelected][i]);
+      appendItem(chestArmor[classSelected][i]);
+      console.log("this is getting through");
+      console.log(chestArmor[classSelected][i]);
     }
     if (selected === "legArmor") {
-      $('#mainSelector').append(legArmor[classSelected][i]);
+      appendItem(legArmor[classSelected][i]);
     }
     if (selected === "classArmor") {
-      $('#mainSelector').append(classArmor[classSelected][i]);
+      appendItem(classArmor[classSelected][i]);
     }
     if (selected === "artifact") {
-      $('#mainSelector').append(artifact[classSelected][i]);
+      //need to check to see if there is enough in the array to continue appending... DO THIS FOR EVERYTHING!!!!!!
+      if (itemGroupStart + i < artifact[classSelected].length) {
+        appendItem(artifact[classSelected][i]);
+      }
+      console.log("you have passed the end!");
     }
   }
 
@@ -927,7 +942,6 @@ $('body').on('click', 'img', function() {
   console.log(this.id);
 
 });
-
 
 
 //clicking on the x kills the menu
