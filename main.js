@@ -364,26 +364,35 @@ var classSelected = 0;
 
 //clicking on items in the pop up menu will set them.
 //Future build will have data placed in graph bellow
-var choicesNotSet = [["selected2",['box2']], [["selected3"],["box3"]], [["selected4"],["box4"]]];
+var choicesNotSet = [["equipedbox2",['equipedContainer2']], [["equipedbox3"],["equipedContainer3"]], [["equipedbox4"],["equipedContainer4"]]];
 
 $('body').on('click', '.item-pad img', function() {
   var setItem = currentItems[this.id];
+  //remove image from col that is first in choicesNotSet
   $(`#${choicesNotSet[0][0]}`).remove();
-  $(`#${choicesNotSet[0][1]}`).append(`<img id=${choicesNotSet[0][0]} class="border responsive" src=${bungie + "" + setItem.icon }>`);
+  //set new image for col that had image removed
+  $(`#${choicesNotSet[0][1]}`).append(`<div id="equipedbox2"><img id=${choicesNotSet[0][0]} title=${choicesNotSet[0][1]} class="borderGrey responsive-img" src=${bungie + "" + setItem.icon }></div>`);
+
   choicesNotSet.shift();
 
   //TABLE SHOULD GET SET HERE
-
+  // if (true) {
+  //
+  // }
 });
 
 $('body').on('click', '.selctionSlots img', function() {
-  console.log(this.id);
+  $(`#${this.id}`).remove();
+  $(`#${this.title}`).append(`<div id="${this.id}"><img id="" class="border responsive-img" src="http://placehold.it/90x90"</div>`);
+  choicesNotSet.push([[this.id],[this.title]]);
 });
 
 
-
-
 //REMOVE SELECTED ITEM AND PUSH BACK TO choicesNotSet
+
+
+
+
 
 
 
@@ -601,21 +610,48 @@ $('body').on('mouseenter', 'tr', function() {
 
 //creates on hover popup with expanded item details
 $('.items').on('mouseenter', "img", function(event) {
-
+  var weaponClass = this.tierTypeName;
+  itemColor = ""
   $('#dynamicPop').remove();
 
   var currentObject = currentItems[this.id];
-  console.log(currentObject.itemName);
+  console.log(currentObject);
+  console.log(currentObject.tierTypeName);
+
+  //set color for item bg
+  if (currentObject.tierTypeName === "Common"){
+    itemColor = "white";
+  }
+  if (currentObject.tierTypeName === "Uncommon"){
+    itemColor = "green";
+  }
+  if (currentObject.tierTypeName === "Rare"){
+    itemColor = "blue";
+  }
+  if (currentObject.tierTypeName === "Legendary"){
+    itemColor = "purple";
+  }
+  if (currentObject.tierTypeName === "Exotic"){
+    itemColor = "yellow";
+  }
+
+  var attackOrDefense = "";
+  //set layout Option and Attack or Defense
+  if (currentObject.itemTypeName === "Hand Cannon" || currentObject.itemTypeName === "Auto Rifle" || currentObject.itemTypeName === "Pulse Rifle" || currentObject.itemTypeName === "Scout Rifle" || currentObject.itemTypeName === "Fusion Rifle" || currentObject.itemTypeName === "Shotgun" || currentObject.itemTypeName === "Sniper Rifle" || currentObject.itemTypeName === "Sidearm") {
+    attackOrDefense = "Attack";
+  } else if (currentObject.itemTypeName === "Sword" || currentObject.itemTypeName === "Machine Gun"||  currentObject.itemTypeName === "Rocket Launcher"){
+    attackOrDefense = "Attack";
+  } else {
+    attackOrDefense = "Defense"
+  }
 
 
-
-
-//THIS WILL ONLY WORK FOR PRIMARY WEAPONS
+//THIS WILL ONLY WORK FOR PRIMARY WEAPONS must create dynamic if statements
 
   $('#item-popup').append($(`
 
     <div id="dynamicPop">
-      <div class="row purple">
+      <div class="row ${itemColor}">
 
         <div id="image1" class="col s3">
           <img class="responsive-img" src=${bungie + "" + currentObject.icon}>
@@ -633,21 +669,18 @@ $('.items').on('mouseenter', "img", function(event) {
       </div>
 
       <div class="row">
-        <div class="col s3">
-          <img class="responsive-img" src="http://placehold.it/60x60">
-        </div>
-        <div class="col s9">
+        <div class="col s12">
           <div class="row">
             <div id="testInsert" class="col s12">
               <p>130/170</p>
             </div>
             <div class="col s12">
-              <p>ATTACK</p>
+              <p>${attackOrDefense}</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="row border-bottom">
+      <div class="row border-bottom pushDown">
         <div class="col s12">
           <p class="">${currentObject.itemDescription}</p>
         </div>
@@ -733,25 +766,6 @@ $('.items').on('mouseenter', "img", function(event) {
 }).on('mouseleave', "img", function() {
   $("#item-popup").css({"display": "none"});
 });
-
-
-
-
-// $('body').append($(`<div class="border"><p>${dataGold[i].items[variable].itemName}</p>
-// <img src=${bungie + "" + dataGold[i].items[variable].icon }>
-// <p> ${item.itemDescription}</p>
-// <p>equippable: ${item.equippable}</p>
-// <p>itemTypeName${item.itemTypeName}</p>
-// <p>BucketHash:${item.bucketTypeHash}</p>
-// <p>classType:${item.classType}</p>
-// <br><br>
-// <p>exclusive:${item.exclusive}</p>
-// <p>nonTransferable:${item.nonTransferable}</p>
-//
-// </div>`));
-
-
-
 
 
 
