@@ -591,6 +591,12 @@ var itemGroupStart = 0;
 var page = 0;
 var dataGold = [];
 
+var subClass = [[],[],[]];
+var primary = [[],[],[],[]];
+var special = [[],[],[],[]];
+var heavy = [];
+var ghost = [];
+
 var helmet = [[],[],[]];
 var gauntlets = [[],[],[]];
 var chestArmor = [[],[],[]];
@@ -598,28 +604,6 @@ var legArmor = [[],[],[]];
 var classArmor = [[],[],[]];
 var artifact = [[],[],[]];
 
-var hunterChestArmor = [];
-var hunterGauntlets = [];
-var hunterHelmet = [];
-var hunterLegArmor = [];
-var hunterClassArmor = [];
-var hunterArtifact = []; //This may not be class specific... check later.
-
-
-var warlockChestArmor = [];
-var warlockGauntlets = [];
-var warlockHelmet = [];
-var warlockLegArmor = [];
-var warlockClassArmor = [];
-var warlockArtifact = []; //This may not be class specific... check later.
-
-
-var titanChestArmor = [];
-var titanGauntlets = [];
-var titanHelmet = [];
-var titanLegArmor = [];
-var titanClassArmor = [];
-var titanArtifact = []; //This may not be class specific... check later.
 
 
 // var displayData = function(){
@@ -647,18 +631,6 @@ var titanArtifact = []; //This may not be class specific... check later.
 
 
 
-//
-// $('body').append($(`<div class="border"><p>${dataGold[i].items[variable].itemName}</p>
-// <img src=${bungie + "" + dataGold[i].items[variable].icon }>
-// <p> ${item.itemDescription}</p>
-// <p>equippable: ${item.equippable}</p>
-// <p>${item.tierTypeName}</p>
-// <p>${item.itemTypeName}</p>
-// <p>BucketHash:${item.bucketTypeHash}</p>
-// <p>ItemHash:${item.itemHash}</p>
-// <br><br>
-// </div>`));
-
 
 
 
@@ -679,98 +651,148 @@ var dataMine = function() {
         for (var i = 0; i < dataGold.length; i++) {
            for (var variable in dataGold[i].items) {
             var item = dataGold[i].items[variable];
+
+
+            // $('body').append($(`<div class="border"><p>${dataGold[i].items[variable].itemName}</p>
+            // <img src=${bungie + "" + dataGold[i].items[variable].icon }>
+            // <p> ${item.itemDescription}</p>
+            // <p>equippable: ${item.equippable}</p>
+            // <p>itemTypeName${item.itemTypeName}</p>
+            // <p>BucketHash:${item.bucketTypeHash}</p>
+            // <p>classType:${item.classType}</p>
+            // <br><br>
+            // <p>exclusive:${item.exclusive}</p>
+            // <p>nonTransferable:${item.nonTransferable}</p>
+            //
+            // </div>`));
+
+
             if (item.bucketTypeHash == 3448274439) {
               if (item.classType == 0) {
-                helmet[0].push(item)
+                helmet[0].push(item);
               }
               if (item.classType == 1) {
-                helmet[1].push(item)
+                helmet[1].push(item);
               }
               if (item.classType == 2) {
-                helmet[2].push(item)
+                helmet[2].push(item);
               }
             }
             if (item.bucketTypeHash == 14239492) {
               if (item.classType == 0) {
-                chestArmor[0].push(item)
+                chestArmor[0].push(item);
               }
               if (item.classType == 1) {
-                chestArmor[1].push(item)
+                chestArmor[1].push(item);
               }
               if (item.classType == 2) {
-                chestArmor[2].push(item)
+                chestArmor[2].push(item);
               }
             }
             if (item.bucketTypeHash == 3551918588) {
               if (item.classType == 0) {
-                gauntlets[0].push(item)
+                gauntlets[0].push(item);
               }
               if (item.classType == 1) {
-                gauntlets[1].push(item)
+                gauntlets[1].push(item);
               }
               if (item.classType == 2) {
-                gauntlets[2].push(item)
+                gauntlets[2].push(item);
               }
             }
             if (item.bucketTypeHash == 20886954) {
               if (item.classType == 0) {
-                legArmor[0].push(item)
+                legArmor[0].push(item);
               }
               if (item.classType == 1) {
-                legArmor[1].push(item)
+                legArmor[1].push(item);
               }
               if (item.classType == 2) {
-                legArmor[2].push(item)
+                legArmor[2].push(item);
               }
             }
             if (item.bucketTypeHash == 1585787867) {
               if (item.classType == 0) {
-                classArmor[0].push(item)
+                classArmor[0].push(item);
               }
               if (item.classType == 1) {
-                classArmor[1].push(item)
+                classArmor[1].push(item);
               }
               if (item.classType == 2) {
-                classArmor[2].push(item)
+                classArmor[2].push(item);
               }
             }
             if (item.bucketTypeHash == 434908299) {
               if (item.classType == 0) {
-                artifact[0].push(item)
+                artifact[0].push(item);
               }
               if (item.classType == 1) {
-                artifact[1].push(item)
+                artifact[1].push(item);
               }
               if (item.classType == 2) {
-                artifact[2].push(item)
+                artifact[2].push(item);
               }
+            }
+
+            //left side
+
+            if (item.bucketTypeHash === 3284755031) {
+              if (item.classType == 0) {
+                subClass[0].push(item);
+              }
+              if (item.classType == 1) {
+                subClass[1].push(item);
+              }
+              if (item.classType == 2) {
+                subClass[2].push(item);
+              }
+            }
+            if (item.bucketTypeHash == 1498876634 && item.equippable === true) { //specific with extra class all
+              if (item.classType == 0) {
+                primary[0].push(item)
+              }
+              if (item.classType == 1) {
+                primary[1].push(item)
+              }
+              if (item.classType == 2) {
+                primary[2].push(item)
+              }
+              if (item.classType == 3) {
+                primary[3].push(item)
+              }
+            }
+            if (item.bucketTypeHash == 2465295065 && item.equippable === true) { //specific with extra class all
+              if (item.classType == 0) {
+                special[0].push(item)
+              }
+              if (item.classType == 1) {
+                special[1].push(item)
+              }
+              if (item.classType == 2) {
+                special[2].push(item)
+              }
+              if (item.classType == 3) {
+                special[3].push(item)
+              }
+            }
+            if (item.bucketTypeHash == 953998645  && item.equippable === true) { //Heavy Weapons are NON CLASS SPECIFIC!
+                heavy.push(item)
+            }
+            if (item.bucketTypeHash == 4023194814  && item.equippable === true) { //GHOST IS NON CLASS SPECIFIC!
+              ghost.push(item);
             }
           }
         }
-        console.log(titanHelmet);
-        console.log(titanChestArmor);
-        console.log(titanGauntlets);
-        console.log(titanLegArmor);
-        console.log(hunterHelmet);
-        console.log(hunterChestArmor);
-        console.log(hunterGauntlets);
-        console.log(hunterLegArmor);
-        console.log(warlockHelmet);
-        console.log(warlockChestArmor);
-        console.log(warlockGauntlets);
-        console.log(warlockLegArmor);
-        console.log(hunterArtifact);
-        console.log(warlockArtifact);
-        console.log(titanArtifact);
-        console.log(titanClassArmor);
-        console.log(hunterClassArmor);
-        console.log(warlockClassArmor);
-        console.log(helmet);
-        console.log(gauntlets);
-        console.log(chestArmor);
-        console.log(legArmor);
-        console.log(classArmor);
-        console.log(artifact);
+        console.log("subclass");
+        console.log(subClass);
+        // console.log("primary");
+        // console.log(primary);
+        // console.log('special');
+        // console.log(special);
+        // console.log('heavy');
+        // console.log(heavy);
+        // console.log('ghost');
+        // console.log(ghost);
 
 
       $(".logo").css({"color": "green"});
@@ -845,10 +867,35 @@ var side = 0;
 var classSelected = 0;
 
 //clicking on an image uses image id to change hidden menu then opens it
-$('body').on('click', 'img', function() {
+$('body').on('click', 'img', function() { //causes a problem when clickin on the popup imgs... define 'body' more specific
 
 
 //SIDE 1-------------------------------------------
+  if (this.id === 'subClass1') {
+    selected = "subClass";
+    side = 1;
+  }
+  if (this.id === "primary1") {
+    selected = "primary";
+    side = 1;
+  }
+  if (this.id === "special1") {
+    selected = "special";
+    side = 1;
+  }
+  if (this.id === "heavy1") {
+    selected = "heavy";
+    side = 1;
+  }
+  if (this.id === 'ghost1') {
+    selected = 'ghost';
+    side = 1;
+  }
+
+
+
+
+
   if (this.id === "helmet1") {
     selected = "helmet";
     side = 1;
@@ -876,11 +923,34 @@ $('body').on('click', 'img', function() {
 
 
 //SIDE 2 ---------------------------------------------
+
+  if (this.id === 'subClass2') {
+    selected = "subClass";
+    side = 2;
+  }
+  if (this.id === "primary2") {
+    selected = "primary";
+    side = 2;
+  }
+  if (this.id === "special2") {
+    selected = "special";
+    side = 2;
+  }
+  if (this.id === "heavy2") {
+    selected = "heavy";
+    side = 2;
+  }
+  if (this.id === 'ghost2') {
+    selected = 'ghost';
+    side = 2;
+  }
+
+
+
+
   if (this.id === "helmet2") {
     selected = "helmet";
     side = 2;
-    console.log(selected);
-    console.log(side);
   }
   if (this.id === "gauntlets2") {
     selected = "gauntlets";
@@ -906,7 +976,7 @@ $('body').on('click', 'img', function() {
   $('.item-pad img').remove();
 
   for (var i = 0; i < 24; i++) {
-    itemGroupStart += 1; //MAKE SURE TO UPON EXITING SCREEN SET PAGE TO ZERO
+    itemGroupStart += 0; //MAKE SURE TO UPON EXITING SCREEN SET PAGE TO ZERO
     //everything checks out, but have a hiccup with the append ATM
     //of course its not going to work... it has no idea what to append... need $('body')
     //and whatever else... should build into a function...
@@ -931,9 +1001,49 @@ $('body').on('click', 'img', function() {
       //need to check to see if there is enough in the array to continue appending... DO THIS FOR EVERYTHING!!!!!!
       if (itemGroupStart + i < artifact[classSelected].length) {
         appendItem(artifact[classSelected][i]);
+        console.log(artifact[classSelected].length);//check to make sure the length matches with the output
       }
       console.log("you have passed the end!");
     }
+
+    //left side of chars
+
+    if (selected === "subClass") {
+      console.log(itemGroupStart);
+      if (itemGroupStart + i < subClass[classSelected].length) {
+        appendItem(subClass[classSelected][i]);
+      }
+      console.log("you have passed the end!");
+    }
+
+    if (selected === "primary") {
+      if (itemGroupStart + i < primary[3].length) { //somehow need to get the single exclusive gun in
+        appendItem(primary[3][i]);
+      }
+      console.log("you have passed the end!");
+    }
+
+    if (selected === "special") {
+      if (itemGroupStart + i < special[3].length) { //somehow need to get the single exclusive gun in
+        appendItem(special[3][i]);
+      }
+      console.log("you have passed the end!");
+    }
+
+    if (selected === "heavy") {
+      if (itemGroupStart + i < heavy.length) {
+        appendItem(heavy[i]);
+      }
+      console.log("you have passed the end!");
+    }
+
+    if (selected === "ghost") {
+      if (itemGroupStart + i < ghost.length) {
+        appendItem(ghost[i]);
+      }
+      console.log("you have passed the end!");
+    }
+
   }
 
 
