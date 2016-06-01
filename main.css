@@ -34,11 +34,24 @@ div .logo {
   margin: 0 0 0 20px;
 }
 
-img {
+ /*.push-left img {
   margin-bottom: 10px;
-  margin-left: -10px;
-  cursor: pointer;
+  margin-left: -30px;
 }
+
+.push-right img {
+  margin-bottom: 10px;
+  margin-left: 30px;
+  cursor: pointer;
+}*/
+
+
+/*figure this one out later*/
+/*.left-p p {
+  margin-left: -30px;
+  position: relative;
+}*/
+
 
 
 .light {
@@ -261,4 +274,8 @@ div .item-details td {
 
 h6 {
   color: #fff;
+}
+
+.selectionSlots {
+  height: 150px;
 }

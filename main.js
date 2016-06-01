@@ -1,205 +1,4 @@
-// var apiKey11 = "42abbcb15ac647baa65d34b7e6bf6c62";
-//
-// var xhr = new XMLHttpRequest();
-// xhr.open("GET", "http://www.bungie.net/Platform/Destiny/Vanguard/Grimoire/1/4611686018434964640/", true);
-// xhr.setRequestHeader("X-API-Key", apiKey11);
-//
-// xhr.onreadystatechange = function(){
-//  if(this.readyState === 4 && this.status === 200){
-//   var json = JSON.parse(this.responseText);
-//   console.log(json.Response.data); //Gjallarhorn
-//   console.log(json.Response);
-//  }
-// }
-//
-// xhr.send();
-//
-// var apiKey = "42abbcb15ac647baa65d34b7e6bf6c62";
-//
-// var xhr = new XMLHttpRequest();
-// xhr.open("GET", "http://www.bungie.net/Platform/Destiny/explorer/items/", true);
-// xhr.setRequestHeader("X-API-Key", apiKey);
-//
-// xhr.onreadystatechange = function(){
-//  if(this.readyState === 4 && this.status === 200){
-//   var json = JSON.parse(this.responseText);
-//   console.log(json.Response.data); //Gjallarhorn
-//   console.log(json.Response);
-//  }
-// }
-//
-// xhr.send();
-//
-// // Get the membership info
-// var apiKey = "42abbcb15ac647baa65d34b7e6bf6c62";
-//
-// var xhr = new XMLHttpRequest();
-// xhr.open("GET", "http://www.bungie.net/platform/User/GetBungieAccount/5262939/254/", true);
-// xhr.setRequestHeader("X-API-Key", apiKey);
-//
-// xhr.onreadystatechange = function(){
-//  if(this.readyState === 4 && this.status === 200){
-//   var json = JSON.parse(this.responseText);
-//   console.log(json.Response); //Gjallarhorn
-//  }
-// }
-//
-// xhr.send();
-//
-//
-//
-//
-//
-//
-//
-//
-// //Get the membership info
-// var apiKey = "42abbcb15ac647baa65d34b7e6bf6c62";
-//
-// var xhr = new XMLHttpRequest();
-// xhr.open("GET", "http://www.bungie.net/platform/User/GetBungieAccount/SSC20%smiley/254/", true);
-// xhr.setRequestHeader("X-API-Key", apiKey);
-//
-// xhr.onreadystatechange = function(){
-//  if(this.readyState === 4 && this.status === 200){
-//   var json = JSON.parse(this.responseText);
-//   console.log(json.Response); //Gjallarhorn
-//  }
-// }
-//
-// xhr.send();
-//
-//
-//
-//
-//
-//
-//
-//
-// // Attempt at getting ID from USERNAME
-// var apiKey = "42abbcb15ac647baa65d34b7e6bf6c62";
-//
-// var xhr = new XMLHttpRequest();
-// xhr.open("GET", "http://www.bungie.net/platform/Destiny/1/Stats/GetMembershipIdByDisplayName/DRayX/", true);
-// xhr.setRequestHeader("X-API-Key", apiKey);
-//
-// xhr.onreadystatechange = function(){
-//  if(this.readyState === 4 && this.status === 200){
-//   var json = JSON.parse(this.responseText);
-//   console.log(json.Response); //Gjallarhorn
-//  }
-// }
-//
-// xhr.send();
-//
-//
-//
-//
-//
-// // SECOND ATTEMPT
-// //Attempt at getting ID from USERNAME
-// var apiKey = "42abbcb15ac647baa65d34b7e6bf6c62";
-//
-// var xhr = new XMLHttpRequest();
-// xhr.open("GET", "http://www.bungie.net/platform/Destiny/SearchDestinyPlayer/2/ssc_killersmiley/", true);
-// xhr.setRequestHeader("X-API-Key", apiKey);
-//
-// xhr.onreadystatechange = function(){
-//  if(this.readyState === 4 && this.status === 200){
-//   var json = JSON.parse(this.responseText);
-//   console.log(json.Response); //Gjallarhorn
-//  }
-// }
-//
-// xhr.send();
-//
-//
-// SECOND ATTEMPT
-// var apiKey = "42abbcb15ac647baa65d34b7e6bf6c62";
-//
-// var xhr = new XMLHttpRequest();
-// xhr.open("GET", "https://www.bungie.net/Platform/Destiny/Explorer/items/", true);
-// xhr.setRequestHeader("X-API-Key", apiKey);
-//
-// xhr.onreadystatechange = function(){
-//  if(this.readyState === 4 && this.status === 200){
-//   var json = JSON.parse(this.responseText);
-//   console.log(json); //Gjallarhorn
-//  }
-// };
-//
-// xhr.send();
-//
-//
-//
-//
-// var apiKey = "42abbcb15ac647baa65d34b7e6bf6c62";
-//
-// $.ajaxSetup({
-//   headers: {
-//     "X-API-Key": apiKey
-//   }
-// });
-//
-// var $xhr = $.getJSON('http://www.bungie.net/Platform/Destiny/2/Stats/GetMembershipIdByDisplayName/player12345/');
-//
-//
-// $xhr.done(function(data) {
-//     if ($xhr.status !== 200) {
-//         return;
-//     }
-//     console.log(data);
-//
-// });
-//
-// $xhr.fail(function(err) {
-//     console.log(err);
-// });
-//
-//
-//
-// var apiKey = "42abbcb15ac647baa65d34b7e6bf6c62";
-//
-// $.ajaxSetup({
-//   headers: {
-//     "X-API-Key": apiKey
-//   }
-// });
-//
-// var $xhr = $.getJSON('http://www.bungie.net/Platform/Destiny/SearchDestinyPlayer/1/Killersmiley87/');
-//
-//
-// $xhr.done(function(data) {
-//     if ($xhr.status !== 200) {
-//         return;
-//     }
-//     console.log(data);
-//
-// });
-//
-// $xhr.fail(function(err) {
-//     console.log(err);
-// });
-//
-// function getMembershipID(psn) {
-//           $.ajax({
-//             method: "GET",
-//             url: "http://www.bungie.net/Platform/Destiny/SearchDestinyPlayer/2/" + psn + "/",
-//             dataType: 'JSON',
-//             success: function(result){
-//               alert(psn);
-//               console.log(result);
-//              }
-//          });
-//         }
-//
-// console.log(getMembershipID('Killersmiley87'));
-//
-//
 
-
-//
-//
 //
 
 
@@ -287,292 +86,12 @@
 
 
 
-//
-// //CLOSE BUT NOT QUITE THERE...DATA NOT CONSISTENT
-// var dataArray = [];
-// var allArray = [];
-//
-// var dataMine = function() {
-//   // var dataMine1 = []
-//   for (var d = 0; d < 8; d++) {
-//     var $xhr = $.getJSON(`http://www.bungie.net/Platform/Destiny/Explorer/Items/?count=500&page=${d}&definitions=true`);
-//     (function(d2){
-//
-//       $xhr.done(function(data) {
-//           if ($xhr.status !== 200) {
-//               return;
-//           }
-//           dataArray[d2] = [];
-//             for (var i = 0; i < data.Response.data.itemHashes.length; i++) {
-//               dataArray[d2][i] = data.Response.data.itemHashes[i];
-//                console.log(data.Response.data.itemHashes[i]);
-//             }
-//             for (var p = 0; p < dataArray[d2].length; p++) {
-//               console.log(data.Response.definitions.items[dataArray[d2][p]]);
-//                 allArray.push(data.Response.definitions.items[dataArray[d2][p]]);
-//
-//             }
-//           // }
-//           console.log(allArray);
-//
-//       });
-//
-//       $xhr.fail(function(err) {
-//           console.log(err);
-//       });
-//     })(d);
-//   }
-// };
-//
-// console.log("this is not good");
-// dataMine();
-//
-
-
-
-//CLOSE BUT NOT QUITE THERE...DATA NOT CONSISTENT V2
-// dataArray[d2] = [];
-// for (var i = 0; i < data.Response.data.itemHashes.length; i++) {
-//   dataArray[d2][i] = data.Response.data.itemHashes[i];
-//    console.log(data.Response.data.itemHashes[i]);
-// }
-// for (var p = 0; p < dataArray[d2].length; p++) {
-//   console.log(data.Response.definitions.items[dataArray[d2][p]]);
-//     allArray.push(data.Response.definitions.items[dataArray[d2][p]]);
-//     });
-// var dataArray = [];
-// var allArray = [];
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// // Get the FIRST 500 WEAPONS
-// var $xhr = $.getJSON('http://www.bungie.net/Platform/Destiny/Explorer/Items/?buckets=PrimaryWeapon&count=500&definitions=true');
-//
-// $xhr.done(function(data) {
-//     if ($xhr.status !== 200) {
-//         return;
-//     }
-//     console.log(data);
-//
-// });
-//
-// $xhr.fail(function(err) {
-//     console.log(err);
-// });
-
-
-
-//
-//
-// // // Get the FIRST 100 as a page items
-// var $xhr = $.getJSON('https://www.bungie.net/Platform/Destiny/Explorer/Items/?count=100&page=0' );
-//
-// $xhr.done(function(data) {
-//     if ($xhr.status !== 200) {
-//         return;
-//     }
-//     console.log(data);
-//
-// });
-//
-// $xhr.fail(function(err) {
-//     console.log(err);
-// });
-//
-//
-
-
-
-
-//NOT WORKING ATM
-// var $xhr = $.getJSON('http://www.bungie.net/Platform/Destiny/Stats/UniqueWeapons/1/4611686018434064178/2305843009217757075/?definitions=true' );
-//
-// $xhr.done(function(data) {
-//     if ($xhr.status !== 200) {
-//         return;
-//     }
-//     console.log(data);
-//
-// });
-//
-// $xhr.fail(function(err) {
-//     console.log(err);
-// });
-
-
-
-
-
-
-
-
-//NOT WORKING ATM
-// var $xhr = $.getJSON('http://www.bungie.net/Platform/Destiny/1/' );
-//
-// $xhr.done(function(data) {
-//     if ($xhr.status !== 200) {
-//         return;
-//     }
-//     console.log(data);
-//
-// });
-//
-// $xhr.fail(function(err) {
-//     console.log(err);
-// });
-//
-// /{membershipType}/Account/{destinyMembershipId}/Character/{characterId}/Inventory/Summary/
-
-//
-//
-//
-// // // Searching for 1 item
-// var $xhr = $.getJSON('https://www.bungie.net/Platform/Destiny/Manifest/2/60040896/' );
-//
-// $xhr.done(function(data) {
-//     if ($xhr.status !== 200) {
-//         return;
-//     }
-//     console.log(data);
-//
-// });
-//
-// $xhr.fail(function(err) {
-//     console.log(err);
-// });
-
-
-// var sameDigits = function(a, b) {
-//   a.sort(function(a, b){return b-a});
-//   b.sort(function(a, b){return b-a});
-//   }
-// }
-
-
-//
-// //
-// //
-//
-// //
-// //
-// //
-// //
-// // //Isolate Information /full pull
-// //
-// //
-//
-// //MASSIVE DATA PULL AND DISPLAY TO SCREEN!
-// //dataGold now contains only the unique codes...
-//
-// var page = 0;
-// var dataGold = [];
-// var dataDef = [];
-// var displayData = function(){
-//   var bungie = "http://www.bungie.net";
-//   // for (var i = 0; i < dataGold.length; i++) {
-//     console.log(dataGold);
-//     console.log(dataDef);
-//
-//     // // console.log(dataGold[i].items);
-//     // for (var variable in dataGold[i].items) {
-//     //   var item = dataGold[i].items[variable];
-//     //   console.log(dataGold[i].items[variable]);
-//     //   $('body').append($(`<div class="border"><p>${dataGold[i].items[variable].itemName}</p>
-//     //   <img src=${bungie + "" + dataGold[i].items[variable].icon }>
-//     //   <p> ${item.itemDescription}</p>
-//     //   <p>equippable: ${item.equippable}</p>
-//     //   <p>${item.tierTypeName}</p>
-//     //   <p>${item.itemTypeName}</p>
-//     //   <p>BucketHash:${item.bucketTypeHash}</p>
-//     //   <p>ItemHash:${item.itemHash}</p>
-//     //   <br><br>
-//     //   </div>`))
-//     // }
-//   // }
-// };
-// //
-// // var dataMine = function() {
-// //   page ++;
-// //
-// //   var $xhr = $.getJSON(`http://www.bungie.net/Platform/Destiny/Explorer/Items/?BucketHash=284967655&count=500&page=${page}&definitions=true`);
-// //   $xhr.done(function(data) {
-// //     if ($xhr.status !== 200) {
-// //       return;
-// //     }
-// //     dataGold.push(data.Response.data.itemHashes);
-// //     console.log(Object.keys(dataDef[0]).length);
-// //     // if (page > 0) {
-// //     //   console.log(dataGold);
-// //     // }
-// //     if (page === 7) {
-// //       displayData()
-// //       return;
-// //     }
-// //     dataMine();
-// //   });
-// //   console.log("does this ever print?");
-// // };
-//
-// var $xhr = $.getJSON(`http://www.bungie.net/Platform/Destiny/Explorer/Items/?BucketHash=284967655&definitions=true`);
-// $xhr.done(function(data) {
-//   if ($xhr.status !== 200) {
-//     return;
-//   }
-//   dataGold.push(data);
-//   // dataDef.push(data.Response.definitions.items);
-//   // dataMine();
-//   displayData();
-// });
-// $xhr.fail(function(err) {
-//   console.log(err);
-// });
-//
-
-
-
-// $('body').on('hover', 'tr', function() {
-//   console.log(this);
-//   $(this).toggle(function () {
-//     $(this).css({backgroundColor: "grey"});
-//   }, function () {
-//
-//   }
-//
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 var apiKey = "42abbcb15ac647baa65d34b7e6bf6c62";
 
 $.ajaxSetup({
   headers: {
-    "X-API-Key": apiKey
+    "X-API-Key": apiKey,
   }
 });
 
@@ -586,6 +105,7 @@ $.ajaxSetup({
 //MASSIVE DATA PULL AND DISPLAY TO SCREEN!
 
 var bungie = "http://www.bungie.net";
+var pictureNumber = 0;
 var currentItems = [];
 var itemGroupStart = 0;
 var page = 0;
@@ -603,35 +123,6 @@ var chestArmor = [[],[],[]];
 var legArmor = [[],[],[]];
 var classArmor = [[],[],[]];
 var artifact = [[],[],[]];
-
-
-
-// var displayData = function(){
-  var bungie = "http://www.bungie.net";
-//   for (var i = 0; i < dataGold.length; i++) {
-//     // console.log(dataGold[i].items);
-//     for (var variable in dataGold[i].items) {
-//       var item = dataGold[i].items[variable];
-//       console.log(dataGold[i].items[variable]);
-//       $('body').append($(`<div class="border"><p>${dataGold[i].items[variable].itemName}</p>
-//       <img src=${bungie + "" + dataGold[i].items[variable].icon }>
-//       <p> ${item.itemDescription}</p>
-//       <p>equippable: ${item.equippable}</p>
-//       <p>${item.tierTypeName}</p>
-//       <p>${item.itemTypeName}</p>
-//       <p>BucketHash:${item.bucketTypeHash}</p>
-//       <p>ItemHash:${item.itemHash}</p>
-//       <br><br>
-//       </div>`))
-//     }
-//   };
-// };
-
-
-
-
-
-
 
 
 var dataMine = function() {
@@ -850,13 +341,16 @@ var openMenu = function() {
 var closeMenu = function () {
   $(".popup_bg").css({display: "none"});
   itemGroupStart = 0;
+  currentItems = [];
+  pictureNumber = 0;
 };
 
 
 //appending funciton used for the items in the initial popup ***********************************
 var appendItem = function (obj) {
   currentItems.push(obj);
-  $('#mainSelector').append(`<img src=${bungie + "" + obj.icon}>`);
+  $('#mainSelector').append(`<img id="${pictureNumber}" src=${bungie + "" + obj.icon}>`);
+  pictureNumber +=1;
 };
 
 
@@ -866,8 +360,36 @@ var side = 0;
 //titan=0, hunter=1 warlock=2, -- Titan SET TO DEFAULT -- NEED TO BUILD OUT CLASS CHANGE BUTTONS
 var classSelected = 0;
 
+
+
+//clicking on items in the pop up menu will set them.
+//Future build will have data placed in graph bellow
+var choicesNotSet = [["selected2",['box2']], [["selected3"],["box3"]], [["selected4"],["box4"]]];
+
+$('body').on('click', '.item-pad img', function() {
+  var setItem = currentItems[this.id];
+  $(`#${choicesNotSet[0][0]}`).remove();
+  $(`#${choicesNotSet[0][1]}`).append(`<img id=${choicesNotSet[0][0]} class="border responsive" src=${bungie + "" + setItem.icon }>`);
+  choicesNotSet.shift();
+
+  //TABLE SHOULD GET SET HERE
+
+});
+
+$('body').on('click', '.selctionSlots img', function() {
+  console.log(this.id);
+});
+
+
+
+
+//REMOVE SELECTED ITEM AND PUSH BACK TO choicesNotSet
+
+
+
+
 //clicking on an image uses image id to change hidden menu then opens it
-$('body').on('click', 'img', function() { //causes a problem when clickin on the popup imgs... define 'body' more specific
+$('body').on('click', '.pushDown img', function() { //causes a problem when clickin on the popup imgs... define 'body' more specific
 
 
 //SIDE 1-------------------------------------------
@@ -976,10 +498,7 @@ $('body').on('click', 'img', function() { //causes a problem when clickin on the
   $('.item-pad img').remove();
 
   for (var i = 0; i < 24; i++) {
-    itemGroupStart += 0; //MAKE SURE TO UPON EXITING SCREEN SET PAGE TO ZERO
-    //everything checks out, but have a hiccup with the append ATM
-    //of course its not going to work... it has no idea what to append... need $('body')
-    //and whatever else... should build into a function...
+    itemGroupStart += 0;
     if (selected === "helmet") {
       appendItem(helmet[classSelected][i]);
     }
@@ -999,6 +518,7 @@ $('body').on('click', 'img', function() { //causes a problem when clickin on the
     }
     if (selected === "artifact") {
       //need to check to see if there is enough in the array to continue appending... DO THIS FOR EVERYTHING!!!!!!
+      //Hereby Marked as FUTURE BUILD OUT
       if (itemGroupStart + i < artifact[classSelected].length) {
         appendItem(artifact[classSelected][i]);
         console.log(artifact[classSelected].length);//check to make sure the length matches with the output
@@ -1066,12 +586,171 @@ $('body').on('mouseenter', 'tr', function() {
   $(this).toggleClass('hover');
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 //creates on hover popup with expanded item details
 $('.items').on('mouseenter', "img", function(event) {
+
+  $('#dynamicPop').remove();
+
+  var currentObject = currentItems[this.id];
+  console.log(currentObject.itemName);
+
+
+
+
+//THIS WILL ONLY WORK FOR PRIMARY WEAPONS
+
+  $('#item-popup').append($(`
+
+    <div id="dynamicPop">
+      <div class="row purple">
+
+        <div id="image1" class="col s3">
+          <img class="responsive-img" src=${bungie + "" + currentObject.icon}>
+        </div>
+        <div  class="col s9">
+          <div class="row">
+            <div class="col 12 padding-top">
+              <h2>${currentObject.itemName}</h2>
+            </div>
+          </div>
+
+          <p class="left">${currentObject.itemTypeName}</p>
+          <p class="right">${currentObject.tierTypeName}</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s3">
+          <img class="responsive-img" src="http://placehold.it/60x60">
+        </div>
+        <div class="col s9">
+          <div class="row">
+            <div id="testInsert" class="col s12">
+              <p>130/170</p>
+            </div>
+            <div class="col s12">
+              <p>ATTACK</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row border-bottom">
+        <div class="col s12">
+          <p class="">${currentObject.itemDescription}</p>
+        </div>
+      </div>
+
+
+      <div class="row">
+
+          <table class="responsive-table border-bottom col s12">
+            <tbody>
+              <tr>
+                <td class="left-align">Rate of Fire</td>
+                <td>  Graph  </td>
+                <td id="talasdfaxw4" class="left-align">37/37</td>
+              </tr>
+              <tr>
+                <td class="left-align">Impact</td>
+                <td>  Graph  </td>
+                <td id="tadasdfdsxw4" class="left-align">48/48</td>
+              </tr>
+              <tr>
+                <td class="left-align">Range</td>
+                <td>  Graph  </td>
+                <td id="taxfswd4" class="left-align">59/63</td>
+              </tr>
+              <tr>
+              <td class="left-align">Stability</td>
+              <td>  Graph  </td>
+              <td id="taswaxw4" class="left-align">57/84</td>
+              </tr>
+              <tr>
+                <td class="left-align">Reload</td>
+                <td>  Graph  </td>
+                <td id="taxsdvcwd4" class="left-align">64/73</td>
+              </tr>
+              <tr>
+              <td class="left-align">magazine</td>
+              <td>  Graph  </td>
+              <td id="taszxcvdfxw4" class="left-align">19/19</td>
+              </tr>
+            </tbody>
+          <tfoot>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="row">
+        <div class="col s2">
+          <img class="responsive-img" src="http://placehold.it/40x40">
+        </div>
+        <div class="col s10">
+          <h6>This weapon can be fired in full auto mode</h6>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s2">
+          <img class="responsive-img" src="http://placehold.it/40x40">
+        </div>
+        <div class="col s10">
+          <h6>Causing damage with this weapon increases its stability</h6>
+        </div>
+      </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+`));
+
+
+
+  //this should be were I change the popup before it is displayed
+
   $("#item-popup").css({"display": "block", "marginLeft": event.pageX + 100, "marginTop": event.pageY -300});
 }).on('mouseleave', "img", function() {
   $("#item-popup").css({"display": "none"});
 });
+
+
+
+
+// $('body').append($(`<div class="border"><p>${dataGold[i].items[variable].itemName}</p>
+// <img src=${bungie + "" + dataGold[i].items[variable].icon }>
+// <p> ${item.itemDescription}</p>
+// <p>equippable: ${item.equippable}</p>
+// <p>itemTypeName${item.itemTypeName}</p>
+// <p>BucketHash:${item.bucketTypeHash}</p>
+// <p>classType:${item.classType}</p>
+// <br><br>
+// <p>exclusive:${item.exclusive}</p>
+// <p>nonTransferable:${item.nonTransferable}</p>
+//
+// </div>`));
+
+
 
 
 
