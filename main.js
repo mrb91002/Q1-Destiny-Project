@@ -135,28 +135,12 @@ var dataMine = function() {
     }
     dataGold.push(data.Response.definitions);
     if (page === 7) {
-      // displayData(); //when code is finished run functions
       console.log(dataGold);
 
 
         for (var i = 0; i < dataGold.length; i++) {
            for (var variable in dataGold[i].items) {
             var item = dataGold[i].items[variable];
-
-
-            // $('body').append($(`<div class="border"><p>${dataGold[i].items[variable].itemName}</p>
-            // <img src=${bungie + "" + dataGold[i].items[variable].icon }>
-            // <p> ${item.itemDescription}</p>
-            // <p>equippable: ${item.equippable}</p>
-            // <p>itemTypeName${item.itemTypeName}</p>
-            // <p>BucketHash:${item.bucketTypeHash}</p>
-            // <p>classType:${item.classType}</p>
-            // <br><br>
-            // <p>exclusive:${item.exclusive}</p>
-            // <p>nonTransferable:${item.nonTransferable}</p>
-            //
-            // </div>`));
-
 
             if (item.bucketTypeHash == 3448274439) {
               if (item.classType == 0) {
@@ -276,16 +260,9 @@ var dataMine = function() {
         }
         console.log("subclass");
         console.log(subClass);
-        // console.log("primary");
-        // console.log(primary);
-        // console.log('special');
-        // console.log(special);
-        // console.log('heavy');
-        // console.log(heavy);
-        // console.log('ghost');
-        // console.log(ghost);
 
 
+      //Logo turns green when it's safe to use the program
       $(".logo").css({"color": "green"});
 
 
@@ -313,25 +290,6 @@ $xhr.fail(function(err) {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //all other functions
 
 
@@ -353,42 +311,126 @@ var appendItem = function (obj) {
   pictureNumber +=1;
 };
 
-
-
 var selected = "";
 var side = 0;
 //titan=0, hunter=1 warlock=2, -- Titan SET TO DEFAULT -- NEED TO BUILD OUT CLASS CHANGE BUTTONS
 var classSelected = 0;
 
 
-
 //clicking on items in the pop up menu will set them.
 //Future build will have data placed in graph bellow
-var choicesNotSet = [["equipedbox2",['equipedContainer2']], [["equipedbox3"],["equipedContainer3"]], [["equipedbox4"],["equipedContainer4"]]];
+var choicesNotSet = [[["equipedbox2"],['equipedContainer2'],[2]] , [["equipedbox3"],["equipedContainer3"],[3]], [["equipedbox4"],["equipedContainer4"],[4]]];
 
 $('body').on('click', '.item-pad img', function() {
   var setItem = currentItems[this.id];
+  var stats = setItem.stats;
+
   //remove image from col that is first in choicesNotSet
-  $(`#${choicesNotSet[0][0]}`).remove();
-  //set new image for col that had image removed
-  $(`#${choicesNotSet[0][1]}`).append(`<div id="equipedbox2"><img id=${choicesNotSet[0][0]} title=${choicesNotSet[0][1]} class="borderGrey responsive-img" src=${bungie + "" + setItem.icon }></div>`);
+
+     $(`#${"selectedContainer" + choicesNotSet[0][2]}`).remove();
+     console.log("this is choiceNotSet");
+     var named = choicesNotSet[0][2];
+      // $(`#${"addHere" + choicesNotSet[0][2]}`).append($('<p>added </p>'));
+
+//insert table for weapons:
+//
+
+$(`#${"addHere" + choicesNotSet[0][2]}`).append($(`
+
+<div id="${"selectedContainer" + choicesNotSet[0][2]}">
+  <div id="${"equipedContainer" + choicesNotSet[0][2]}" class="col s12 borderGrey">
+    <div id=${"equipedBox" + choicesNotSet[0][2]}>
+      <img id=${choicesNotSet[0][0]} title=${choicesNotSet[0][1]} name="${named}" class="borderGrey responsive-img" src=${bungie + "" + setItem.icon }>
+    </div>
+  </div>
+
+  <table class="responsive-table border-bottom col s12 borderGrey">
+                <tbody>
+                  <tr>
+                    <td class="left-align">Attack</td>
+                    <td id="" class="left-align">${stats[368428387].minimum} / ${stats[368428387].maximum}</td>
+                  </tr>
+                  <tr>
+                    <td class="left-align">Rate of Fire</td>
+                    <td id="" class="left-align">${stats[4284893193].minimum} / ${stats[4284893193].maximum}</td>
+                  </tr>
+                  <tr>
+                    <td class="left-align">Impact</td>
+                    <td id="" class="left-align">${stats[4043523819].minimum} / ${stats[4043523819].maximum}</td>
+                  </tr>
+                  <tr>
+                    <td class="left-align">Range</td>
+                    <td id="" class="left-align">${stats[1240592695].minimum} / ${stats[1240592695].maximum}</td>
+                  </tr>
+                  <tr>
+                  <td class="left-align">Stability</td>
+                  <td id="" class="left-align">${stats[155624089].minimum} / ${stats[155624089].maximum}</td>
+                  </tr>
+                  <tr>
+                    <td class="left-align">Reload</td>
+                    <td id="" class="left-align">${stats[4188031367].minimum} / ${stats[4188031367].maximum}</td>
+                  </tr>
+                  <tr>
+                  <td class="left-align">magazine</td>
+                  <td id="" class="left-align">${stats[3871231066].minimum} / ${stats[3871231066].maximum}</td>
+                  </tr>
+                </tbody>
+              <tfoot>
+              </tfoot>
+            </table>
+          </div>
+
+  `));
+//
+
+//End weapon table
+
+//begin table for armor
+
+
+
+
+//end table for armor
+
+
+  // $(`#${choicesNotSet[0][0]}`).remove();
+  // //set new image for col that had image removed
+  // $(`#${choicesNotSet[0][1]}`).append(`<div id="equipedbox2"><img id=${choicesNotSet[0][0]} title=${choicesNotSet[0][1]} name="${choicesNotSet[0[3]]}" class="borderGrey responsive-img" src=${bungie + "" + setItem.icon }></div>`);
+
+
+
+
+  // $(`#equipedbox2`).append($('<p>this is some text</p>'));
+
+
+//
+// <div id="equipedbox2">
+//   <img id=${choicesNotSet[0][0]} title=${choicesNotSet[0][1]} name="${choicesNotSet[0[3]]}" class="borderGrey responsive-img" src=${bungie + "" + setItem.icon }>
+// </div>
+
+
 
   choicesNotSet.shift();
+  console.log(setItem);
 
-  //TABLE SHOULD GET SET HERE
-  // if (true) {
-  //
-  // }
+
 });
 
-$('body').on('click', '.selctionSlots img', function() {
-  $(`#${this.id}`).remove();
-  $(`#${this.title}`).append(`<div id="${this.id}"><img id="" class="border responsive-img" src="http://placehold.it/90x90"</div>`);
-  choicesNotSet.push([[this.id],[this.title]]);
-});
 
 
 //REMOVE SELECTED ITEM AND PUSH BACK TO choicesNotSet
+$('body').on('click', '.selctionSlots img', function() {
+  if (this.id !== "") {
+
+    $(`#${this.id}`).remove();
+    $(`#${this.title}`).append(`<div id=""><img id="" name="" class="border responsive-img" src="http://placehold.it/90x90"</div>`);
+    choicesNotSet.push([[this.id],[this.title],[this.name]]);
+    console.log(this);
+    console.log(this.name);
+  }
+});
+
+
 
 
 
@@ -606,7 +648,7 @@ $('body').on('mouseenter', 'tr', function() {
 
 
 
-
+//THIS IS THE POPUP********
 
 //creates on hover popup with expanded item details
 $('.items').on('mouseenter', "img", function(event) {
@@ -615,8 +657,10 @@ $('.items').on('mouseenter', "img", function(event) {
   $('#dynamicPop').remove();
 
   var currentObject = currentItems[this.id];
+  // console.log(currentObject);
+  // console.log(currentObject.tierTypeName);
+  var stats = currentObject.stats;
   console.log(currentObject);
-  console.log(currentObject.tierTypeName);
 
   //set color for item bg
   if (currentObject.tierTypeName === "Common"){
@@ -647,6 +691,111 @@ $('.items').on('mouseenter', "img", function(event) {
 
 
 //THIS WILL ONLY WORK FOR PRIMARY WEAPONS must create dynamic if statements
+if (attackOrDefense === "Attack") {
+
+  $('#item-popup').append($(`
+
+    <div id="dynamicPop">
+      <div class="row ${itemColor}">
+
+        <div id="image1" class="col s3">
+          <img class="responsive-img" src=${bungie + "" + currentObject.icon}>
+        </div>
+        <div  class="col s9">
+          <div class="row">
+            <div class="col 12 padding-top">
+              <h2>${currentObject.itemName}</h2>
+            </div>
+          </div>
+
+          <p class="left">${currentObject.itemTypeName}</p>
+          <p class="right">${currentObject.tierTypeName}</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <div class="row">
+            <div id="testInsert" class="col s12">
+              <p>${stats[368428387].minimum} / ${stats[368428387].maximum}</p>
+            </div>
+            <div class="col s12">
+              <p>${attackOrDefense}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row border-bottom pushDown">
+        <div class="col s12">
+          <p class="">${currentObject.itemDescription}</p>
+        </div>
+      </div>
+
+
+      <div class="row">
+
+          <table class="responsive-table border-bottom col s12">
+            <tbody>
+              <tr>
+                <td class="left-align">Rate of Fire</td>
+                <td>  Graph  </td>
+                <td id="talasdfaxw4" class="left-align">${stats[4284893193].minimum} / ${stats[4284893193].maximum}</td>
+              </tr>
+              <tr>
+                <td class="left-align">Impact</td>
+                <td>  Graph  </td>
+                <td id="tadasdfdsxw4" class="left-align">${stats[4043523819].minimum} / ${stats[4043523819].maximum}</td>
+              </tr>
+              <tr>
+                <td class="left-align">Range</td>
+                <td>  Graph  </td>
+                <td id="taxfswd4" class="left-align">${stats[1240592695].minimum} / ${stats[1240592695].maximum}</td>
+              </tr>
+              <tr>
+              <td class="left-align">Stability</td>
+              <td>  Graph  </td>
+              <td id="taswaxw4" class="left-align">${stats[155624089].minimum} / ${stats[155624089].maximum}</td>
+              </tr>
+              <tr>
+                <td class="left-align">Reload</td>
+                <td>  Graph  </td>
+                <td id="taxsdvcwd4" class="left-align">${stats[4188031367].minimum} / ${stats[4188031367].maximum}</td>
+              </tr>
+              <tr>
+              <td class="left-align">magazine</td>
+              <td>  Graph  </td>
+              <td id="taszxcvdfxw4" class="left-align">${stats[3871231066].minimum} / ${stats[3871231066].maximum}</td>
+              </tr>
+            </tbody>
+          <tfoot>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="row">
+        <div class="col s2">
+          <img class="responsive-img" src="http://placehold.it/40x40">
+        </div>
+        <div class="col s10">
+          <h6>FUTURE BUILD AREA</h6>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s2">
+          <img class="responsive-img" src="http://placehold.it/40x40">
+        </div>
+        <div class="col s10">
+          <h6>DESCRIPTION OF THE SET PERKS</h6>
+        </div>
+      </div>
+
+
+    </div>
+`));
+}
+
+if (attackOrDefense === "Defense") { // NEED INPUT CODES FOR DEFENSE STATS
 
   $('#item-popup').append($(`
 
@@ -692,34 +841,19 @@ $('.items').on('mouseenter', "img", function(event) {
           <table class="responsive-table border-bottom col s12">
             <tbody>
               <tr>
-                <td class="left-align">Rate of Fire</td>
-                <td>  Graph  </td>
-                <td id="talasdfaxw4" class="left-align">37/37</td>
+                <td class="left-align">Icon</td>
+                <td>  Intelect  </td>
+                <td id="talasdfaxw4" class="left-align">${stats[3871231066].minimum} / ${stats[3871231066].maximum}</td>
               </tr>
               <tr>
-                <td class="left-align">Impact</td>
-                <td>  Graph  </td>
-                <td id="tadasdfdsxw4" class="left-align">48/48</td>
+                <td class="left-align">Icon</td>
+                <td>  Discipline  </td>
+                <td id="tadasdfdsxw4" class="left-align">${stats[3871231066].minimum} / ${stats[3871231066].maximum}</td>
               </tr>
               <tr>
-                <td class="left-align">Range</td>
-                <td>  Graph  </td>
-                <td id="taxfswd4" class="left-align">59/63</td>
-              </tr>
-              <tr>
-              <td class="left-align">Stability</td>
-              <td>  Graph  </td>
-              <td id="taswaxw4" class="left-align">57/84</td>
-              </tr>
-              <tr>
-                <td class="left-align">Reload</td>
-                <td>  Graph  </td>
-                <td id="taxsdvcwd4" class="left-align">64/73</td>
-              </tr>
-              <tr>
-              <td class="left-align">magazine</td>
-              <td>  Graph  </td>
-              <td id="taszxcvdfxw4" class="left-align">19/19</td>
+                <td class="left-align">Icon</td>
+                <td>  Strength  </td>
+                <td id="taxfswd4" class="left-align">${stats[3871231066].minimum} / ${stats[3871231066].maximum}</td>
               </tr>
             </tbody>
           <tfoot>
@@ -747,16 +881,11 @@ $('.items').on('mouseenter', "img", function(event) {
 
 
     </div>
-
-
-
-
-
-
-
-
-
 `));
+}
+
+
+
 
 
 
