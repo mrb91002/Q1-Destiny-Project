@@ -45,24 +45,6 @@ div .logo {
   margin: 0 0 0 20px;
 }
 
- /*.push-left img {
-  margin-bottom: 10px;
-  margin-left: -30px;
-}
-
-.push-right img {
-  margin-bottom: 10px;
-  margin-left: 30px;
-  cursor: pointer;
-}*/
-
-
-/*figure this one out later*/
-/*.left-p p {
-  margin-left: -30px;
-  position: relative;
-}*/
-
 
 
 .light {
@@ -293,4 +275,9 @@ h6 {
 
 div p .padding-bottom  {
   color:red;
+}
+
+img:hover {
+  cursor: pointer;
+  opacity: 0.4;
 }

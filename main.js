@@ -91,7 +91,7 @@ var apiKey = "42abbcb15ac647baa65d34b7e6bf6c62";
 
 $.ajaxSetup({
   headers: {
-    "X-API-Key": apiKey,
+    "X-API-Key": apiKey
   }
 });
 
@@ -128,7 +128,7 @@ var artifact = [[],[],[]];
 var dataMine = function() {
   page ++;
 
-  var $xhr = $.getJSON(`http://www.bungie.net/Platform/Destiny/Explorer/Items/?count=500&page=${page}&definitions=true`);
+  var $xhr = $.getJSON(`https://cors-anywhere.herokuapp.com/www.bungie.net/Platform/Destiny/Explorer/Items/?count=500&page=${page}&definitions=true`);
   $xhr.done(function(data) {
     if ($xhr.status !== 200) {
       return;
@@ -277,7 +277,7 @@ var dataMine = function() {
 
 
 
-var $xhr = $.getJSON(`http://www.bungie.net/Platform/Destiny/Explorer/Items/?count=500&page=0&definitions=true`);
+var $xhr = $.getJSON(`https://cors-anywhere.herokuapp.com/www.bungie.net/Platform/Destiny/Explorer/Items/?count=500&page=0&definitions=true`);
 $xhr.done(function(data) {
   if ($xhr.status !== 200) {
     return;
@@ -317,8 +317,46 @@ var side = 0;
 var classSelected = 0;
 
 
+var clone = function(clonedItem) {
+  var cloned = $(clonedItem[0]).clone();
+  // $('#selectedContainer1').remove();
+
+  $('#addHere1').children()[0].remove();
+  $('#addHere1').append(cloned);
+  // console.log($('.switch-back'));
+  console.log('digging in');
+  if ($('#addHere1 img').attr('arraypos') !== undefined){
+
+
+  var number = $('#addHere1 img').attr('arraypos');
+  $(`#${selected + side }`).replaceWith(`$(<img id="${selected + side}" class="border responsive-img"
+   src="${bungie + currentItems[number].icon}")>`);
+}
+
+
+  $('#addHere1 img').parent().attr('id','removedOld');
+  $('#addHere1 img').attr('id','equiped');
+  // $('#addHere1 img').attr('title','removedOldImgTitle');
+  $('#addHere1 img').parent().parent().attr('id','removedOld');
+  $('#addHere1 img').parent().parent().parent().attr('id','removedOldOuter');
+  // console.log($(clonedItem));
+
+
+
+
+  $('#addHere1 a').remove();
+
+
+  // $('.switch-back').attr('id','removedOld');
+
+  // console.log($('.switch-back'));
+};
+
+// $('#table').on('click', 'a', clone);
+
+
+
 //clicking on items in the pop up menu will set them.
-//Future build will have data placed in graph bellow
 var choicesNotSet = [[["equipedbox2"],['equipedContainer2'],[2]] , [["equipedbox3"],["equipedContainer3"],[3]], [["equipedbox4"],["equipedContainer4"],[4]]];
 
 $('body').on('click', '.item-pad img', function() {
@@ -340,7 +378,7 @@ $(`#${"addHere" + choicesNotSet[0][2]}`).append($(`
 <div id="${"selectedContainer" + choicesNotSet[0][2]}">
   <div id="${"equipedContainer" + choicesNotSet[0][2]}" class="col s12 borderGrey">
     <div id=${"equipedBox" + choicesNotSet[0][2]}>
-      <img id=${choicesNotSet[0][0]} title=${choicesNotSet[0][1]} name="${named}" class="borderGrey responsive-img" src=${bungie + "" + setItem.icon }>
+      <img id=${choicesNotSet[0][0]} title=${choicesNotSet[0][1]} name="${named}"  arrayPos="${this.id}" class="borderGrey responsive-img" src=${bungie + "" + setItem.icon }>
     </div>
   </div>
 
@@ -378,8 +416,10 @@ $(`#${"addHere" + choicesNotSet[0][2]}`).append($(`
               <tfoot>
               </tfoot>
             </table>
+            <div>
+              <a id=${"selectedContainer" + choicesNotSet[0][2]} onclick="clone(${"selectedContainer" + choicesNotSet[0][2]})" class="waves-effect waves-light btn grey">Equip</a>
+            </div>
           </div>
-
   `));
 //
 
@@ -420,13 +460,48 @@ $(`#${"addHere" + choicesNotSet[0][2]}`).append($(`
 
 //REMOVE SELECTED ITEM AND PUSH BACK TO choicesNotSet
 $('body').on('click', '.selctionSlots img', function() {
-  if (this.id !== "") {
+  if (this.id !== "" && this.id !== "equiped") {
 
     $(`#${this.id}`).remove();
     $(`#${this.title}`).append(`<div id=""><img id="" name="" class="border responsive-img" src="http://placehold.it/90x90"</div>`);
+
+    $(`#${"addHere" + this.name} tbody`).replaceWith($(`
+      <tbody>
+        <tr>
+          <td class="left-align">Attack</td>
+          <td id="" class="left-align">##/##</td>
+        </tr>
+        <tr>
+          <td class="left-align">Rate of Fire</td>
+            <td id="" class="left-align">##/##</td>
+          </tr>
+          <tr>
+            <td class="left-align">Impact</td>
+            <td id="" class="left-align">##/##</td>
+          </tr>
+          <tr>
+            <td class="left-align">Range</td>
+          <td id="" class="left-align">##/##</td>
+        </tr>
+        <tr>
+          <td class="left-align">Stability</td>
+          <td id="" class="left-align">##/##</td>
+        </tr>
+        <tr>
+          <td class="left-align">Reload</td>
+          <td id="" class="left-align">##/##</td>
+        </tr>
+        <tr>
+          <td class="left-align">magazine</td>
+          <td id="" class="left-align">##/##</td>
+        </tr>
+      </tbody>
+      `));
+
+
+
     choicesNotSet.push([[this.id],[this.title],[this.name]]);
-    console.log(this);
-    console.log(this.name);
+
   }
 });
 
@@ -843,17 +918,17 @@ if (attackOrDefense === "Defense") { // NEED INPUT CODES FOR DEFENSE STATS
               <tr>
                 <td class="left-align">Icon</td>
                 <td>  Intelect  </td>
-                <td id="talasdfaxw4" class="left-align">${stats[3871231066].minimum} / ${stats[3871231066].maximum}</td>
+                <td id="talasdfaxw4" class="left-align">${45} / ${65}</td>
               </tr>
               <tr>
                 <td class="left-align">Icon</td>
                 <td>  Discipline  </td>
-                <td id="tadasdfdsxw4" class="left-align">${stats[3871231066].minimum} / ${stats[3871231066].maximum}</td>
+                <td id="tadasdfdsxw4" class="left-align">${100} / ${100}</td>
               </tr>
               <tr>
                 <td class="left-align">Icon</td>
                 <td>  Strength  </td>
-                <td id="taxfswd4" class="left-align">${stats[3871231066].minimum} / ${stats[3871231066].maximum}</td>
+                <td id="taxfswd4" class="left-align">${70} / ${75}</td>
               </tr>
             </tbody>
           <tfoot>
