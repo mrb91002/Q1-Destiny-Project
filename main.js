@@ -290,7 +290,7 @@ const closeMenu = function() {
   pictureNumber = 0;
 };
 
-// appending funciton used for the items in the initial popup *************
+// appending funciton used for the items in the Selector popup *************
 const appendItem = function(obj) {
   currentItems.push(obj);
   $('#mainSelector').append(`<img id="${pictureNumber}"
@@ -302,6 +302,44 @@ let selected = '';
 let side = 0;
 let classSelected = 0;
 
+
+
+
+
+
+
+//working on pagination issues
+var selectedLi = 1;
+
+$(`.pagination`).on('click', 'div', (event) => {
+  var $thisSelected = $(event.target);
+
+  //when non-active pagination is clicked do something
+  console.log(event.target);
+
+  if (!($thisSelected.parent().hasClass('active'))) {
+    console.log("this is working");
+    $('.pagination').children().eq(selectedLi).toggleClass('active');
+    console.log(event.target);
+    console.log(event.target.id);
+    selectedLi = event.target.id;
+    $thisSelected.parent().toggleClass('active');
+  }
+
+  //
+  //
+  // console.log($('.pagination').children());
+  // console.log($('.pagination').children().eq(1));
+  // console.log($('.pagination').children().length -2); //-2 because of icons
+
+});
+
+
+
+
+
+
+
 const clone = function(clonedItem) {
   if ($(clonedItem).find('img')[0].src !== 'http://placehold.it/90x90') {
     const cloned = $(clonedItem[0]).clone();
@@ -311,7 +349,7 @@ const clone = function(clonedItem) {
     if ($('#addHere1 img').attr('arraypos') !== undefined) {
       const number = $('#addHere1 img').attr('arraypos');
 
-      $(`#${selected + side}`).replaceWith(`$(<img id="${selected + side}"
+      $(`#${selected + side}`).replaceWith(`<img id="${selected + side}"
       class="border responsive-img"
       src="${bungie + currentItems[number].icon}")>`);
     }
@@ -619,11 +657,18 @@ $('#x').on('click', () => {
 });
 
 // highlights line currently hovering over
+// $('body').on('mouseenter', 'tr', function() {
+//   $(this).toggleClass('hover');
+// }).on('mouseleave', 'tr', function() {
+//   $(this).toggleClass('hover');
+// });
+
 $('body').on('mouseenter', 'tr', (event) => {
-  $(event.target).toggleClass('hover');
+  $(event.target).parent().toggleClass('hover');
 }).on('mouseleave', 'tr', (event) => {
-  $(event.target).toggleClass('hover');
+  $(event.target).parent().toggleClass('hover');
 });
+
 
 // THIS IS THE POPUP********
 

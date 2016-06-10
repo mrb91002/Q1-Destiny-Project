@@ -14,6 +14,12 @@ body {
   border: 2px solid #8E9193;
 }
 
+.center {
+  margin: 0 auto 0 auto;
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .char {
   background: url("img/destiny-char.png");
   background-size: cover;
@@ -100,7 +106,7 @@ img:hover {
 }
 
 .item-details img {
-  margin: 0px 0 0 0px;
+  margin: 0 0 0 0;
 }
 
 .item-details p {
@@ -178,6 +184,10 @@ p {
 
 div p .padding-bottom  {
   color:red;
+}
+
+div .pagination {
+  display: inline-block;
 }
 
 .popup_bg {
